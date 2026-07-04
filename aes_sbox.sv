@@ -13,6 +13,21 @@ function automatic logic[7:0] affine (
 
 endfunction
 
+function automatic logic[7:0] inv_affine (
+    input logic [7:0] y
+);
+
+    logic [7:0] x;
+    localparam logic [7:0] D = 8'h5;
+    
+    for(int i = 0; i < 8; i++) begin
+        x[i] = y[(i + 2) % 8] ^ y[(i + 5) % 8] ^ x[(i + 7) % 8] ^ D[i];
+    end
+
+    return x;
+
+endfunction
+
 localparam logic [63:0] IMP_MATRIX = {
     8'b10100000,
     8'b11011110,
@@ -159,6 +174,14 @@ function automatic logic [7:0] aes_sbox (
 );
 
 return affine(inv8(sbox_in));
+
+endfunction
+
+function automatic logic [7:0] aes_inv_sbox (
+    input logic [7:0] sbox_in
+);
+
+return inv8(inv_affine(sbox_in));
 
 endfunction
 

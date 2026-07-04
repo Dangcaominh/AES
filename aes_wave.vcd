@@ -1,5 +1,5 @@
 $date
-	Sat Jun 27 10:24:18 2026
+	Sat Jul  4 14:44:58 2026
 $end
 $version
 	Icarus Verilog
@@ -7,7 +7,7 @@ $end
 $timescale
 	1s
 $end
-$scope module aes_testbench $end
+$scope module tb_cipher_top $end
 $var wire 128 ! cipher_text [127:0] $end
 $var wire 1 " cipher_ready $end
 $var reg 1 # cipher_en $end
@@ -15,17 +15,17 @@ $var reg 128 $ cipher_key [127:0] $end
 $var reg 1 % clk_sys $end
 $var reg 128 & plain_text [127:0] $end
 $var reg 1 ' rst_n $end
-$scope module aes_top $end
+$scope module aes_cipher_top $end
+$var wire 1 # cipher_en $end
+$var wire 128 ( cipher_key [127:0] $end
 $var wire 1 % clk $end
-$var wire 1 # enable $end
-$var wire 128 ( key [127:0] $end
 $var wire 128 ) plain_text [127:0] $end
 $var wire 1 ' rst_n $end
 $var wire 4 * round_num [3:0] $end
 $var wire 128 + round_key [127:0] $end
 $var wire 1 , rkey_en $end
-$var wire 128 - result [127:0] $end
-$var wire 1 " ready $end
+$var wire 128 - cipher_text [127:0] $end
+$var wire 1 " cipher_ready $end
 $scope module u_cipher $end
 $var wire 1 # cipher_en $end
 $var wire 128 . cipher_key [127:0] $end

@@ -1,4 +1,4 @@
-module aes_testbench;
+module tb_cipher_top;
   //input
   reg clk_sys;
   reg rst_n;
@@ -8,8 +8,8 @@ module aes_testbench;
   //output
   wire [127:0] cipher_text;
   wire         cipher_ready;
-  //
-  aes_top aes_top(
+
+  aes_cipher_top aes_cipher_top(
   //input
   clk_sys,
   rst_n,
@@ -23,7 +23,7 @@ module aes_testbench;
   
   initial begin
     $dumpfile("aes_wave.vcd");
-    $dumpvars(0, aes_testbench);
+    $dumpvars(0, tb_cipher_top);
 
     clk_sys = 0;
     rst_n = 0;

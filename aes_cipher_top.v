@@ -5,12 +5,12 @@ module aes_cipher_top(
     // input
     input wire clk,
     input wire rst_n,
-    input wire [127 : 0] key,
+    input wire [127 : 0] cipher_key,
     input wire [127 : 0] plain_text,
-    input wire enable,
+    input wire cipher_en,
     // output
-    output wire [127 : 0] result,
-    output wire ready
+    output reg [127 : 0] cipher_text,
+    output reg cipher_ready
 );
 
 wire [127 : 0] round_key;
@@ -22,13 +22,13 @@ aes_cipher_core u_cipher(
     // input
     .clk(clk),
     .rst_n(rst_n),
-    .cipher_key(key),
+    .cipher_key(cipher_key),
     .plain_text(plain_text),
-    .cipher_en(enable),
+    .cipher_en(cipher_en),
     .round_key(round_key),
     // output
-    .cipher_text(result),
-    .cipher_ready(ready),
+    .cipher_text(cipher_text),
+    .cipher_ready(cipher_ready),
     .round_num(round_num),
     .round_key_en(rkey_en)
 );
@@ -37,8 +37,8 @@ aes_key_expansion u_expansion(
     // input
     .clk(clk),
     .rst_n(rst_n),
-    .cipher_key(key),
-    .cipher_en(enable),
+    .cipher_key(cipher_key),
+    .cipher_en(cipher_en),
     .round_num(round_num),
     .rkey_en(rkey_en),
     // output
