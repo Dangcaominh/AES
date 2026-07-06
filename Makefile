@@ -6,7 +6,7 @@ VIEW = gtkwave
 FLAGS = -g2012
 
 # Source files chung
-SRC_COMMON = aes_decipher_top.v
+SRC_COMMON = aes_cipher_top.v aes_decipher_top.v
 
 # Testbench riêng biệt
 TB_CIPHER = testbench/tb_cipher.sv

@@ -22,7 +22,7 @@ module tb_cipher_top;
   );
   
   initial begin
-    $dumpfile("aes_wave.vcd");
+    $dumpfile("cipher_wave.vcd");
     $dumpvars(0, tb_cipher_top);
 
     clk_sys = 0;

@@ -21,7 +21,7 @@ function automatic logic[7:0] inv_affine (
     localparam logic [7:0] D = 8'h5;
     
     for(int i = 0; i < 8; i++) begin
-        x[i] = y[(i + 2) % 8] ^ y[(i + 5) % 8] ^ x[(i + 7) % 8] ^ D[i];
+        x[i] = y[(i + 2) % 8] ^ y[(i + 5) % 8] ^ y[(i + 7) % 8] ^ D[i];
     end
 
     return x;

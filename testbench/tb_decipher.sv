@@ -13,15 +13,18 @@ module tb_cipher_inv_top;
   //input
   clk_sys,
   rst_n,
-  cipher_text,
   round_key_10,
+  cipher_text,
   decipher_en,
   //output
   plain_text,
   decipher_ready
   );
  
-  initial begin    clk_sys = 0;
+  initial begin    
+    $dumpfile("cipher_inv_wave.vcd");
+    $dumpvars(0, tb_cipher_inv_top);
+    clk_sys = 0;
     rst_n = 0;
     round_key_10 = 0;
     cipher_text = 0;
