@@ -10,12 +10,19 @@ module aes_cipher_top(
     input wire cipher_en,
     // output
     output reg [127 : 0] cipher_text,
+    output reg [127 : 0] round_key_10,
     output reg cipher_ready
 );
 
 wire [127 : 0] round_key;
 wire [3 : 0] round_num;
 wire rkey_en;
+
+always_ff @(posedge clk) begin
+    if(round_num == 10) begin
+        round_key_10 <= round_key;
+    end
+end
 
 
 aes_cipher_core u_cipher(

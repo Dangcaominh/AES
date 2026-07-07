@@ -6,7 +6,7 @@ VIEW = gtkwave
 FLAGS = -g2012
 
 # Source files chung
-SRC_COMMON = aes_cipher_top.v aes_decipher_top.v
+SRC_COMMON = aes_decipher_top.v
 
 # Testbench riêng biệt
 TB_CIPHER = testbench/tb_cipher.sv
@@ -14,19 +14,19 @@ TB_CIPHER_INV = testbench/tb_decipher.sv
 
 # Output files
 CIPHER_OUT = sim_cipher.out
-CIPHER_INV_OUT = sim_cipher_inv.out
+CIPHER_INV_OUT = sim_decipher.out
 
-.PHONY: all compile sim sim_cipher sim_cipher_inv wave wave_cipher wave_cipher_inv clean help
+.PHONY: all compile sim sim_cipher sim_decipher wave wave_cipher wave_decipher clean help
 
 help:
 	@echo "Available targets:"
 	@echo "  all              - Compile and run all tests"
 	@echo "  sim              - Run all simulations"
 	@echo "  sim_cipher       - Run cipher encryption test"
-	@echo "  sim_cipher_inv   - Run cipher decryption test"
+	@echo "  sim_decipher     - Run cipher decryption test"
 	@echo "  wave             - Open all waveforms"
 	@echo "  wave_cipher      - Open waveform for cipher test"
-	@echo "  wave_cipher_inv  - Open waveform for decryption test"
+	@echo "  wave_decipher    - Open waveform for decryption test"
 	@echo "  clean            - Remove generated files"
 
 all: compile sim
@@ -42,7 +42,7 @@ $(CIPHER_INV_OUT): $(SRC_COMMON) $(TB_CIPHER_INV)
 	$(IV) $(FLAGS) -o $(CIPHER_INV_OUT) $(SRC_COMMON) $(TB_CIPHER_INV)
 
 # Chạy tất cả simulations
-sim: sim_cipher sim_cipher_inv
+sim: sim_cipher sim_decipher
 
 # Chạy simulation cipher
 sim_cipher: $(CIPHER_OUT)
@@ -50,18 +50,18 @@ sim_cipher: $(CIPHER_OUT)
 	@echo "✓ Cipher test completed"
 
 # Chạy simulation cipher_inv
-sim_cipher_inv: $(CIPHER_INV_OUT)
+sim_decipher: $(CIPHER_INV_OUT)
 	$(VVP) $(CIPHER_INV_OUT)
-	@echo "✓ Cipher_inv test completed"
+	@echo "✓ Deipher test completed"
 
 # Mở waveforms
-wave: wave_cipher wave_cipher_inv
+wave: wave_cipher wave_decipher
 
 wave_cipher:
 	@if [ -f "cipher_wave.vcd" ]; then $(VIEW) cipher_wave.vcd & else echo "File cipher_wave.vcd not found"; fi
 
-wave_cipher_inv:
-	@if [ -f "cipher_inv_wave.vcd" ]; then $(VIEW) cipher_inv_wave.vcd & else echo "File cipher_inv_wave.vcd not found"; fi
+wave_decipher:
+	@if [ -f "decipher_wave.vcd" ]; then $(VIEW) decipher_wave.vcd & else echo "File decipher_wave.vcd not found"; fi
 
 clean:
 	rm -f *.out *.vcd

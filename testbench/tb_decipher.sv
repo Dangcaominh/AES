@@ -1,4 +1,4 @@
-module tb_cipher_inv_top;
+module tb_decipher_top;
   //input
   reg clk_sys;
   reg rst_n;
@@ -22,8 +22,8 @@ module tb_cipher_inv_top;
   );
  
   initial begin    
-    $dumpfile("cipher_inv_wave.vcd");
-    $dumpvars(0, tb_cipher_inv_top);
+    $dumpfile("decipher_wave.vcd");
+    $dumpvars(0, tb_decipher_top);
     clk_sys = 0;
     rst_n = 0;
     round_key_10 = 0;
