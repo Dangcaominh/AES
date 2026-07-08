@@ -6,10 +6,10 @@ VIEW = gtkwave
 FLAGS = -g2012
 
 # Source files chung
-SRC_COMMON = aes_decipher_top.v
+SRC_COMMON = aes.v
 
 # Testbench riêng biệt
-TB_CIPHER = testbench/tb_cipher.sv
+TB_CIPHER = testbench/tb.sv
 TB_CIPHER_INV = testbench/tb_decipher.sv
 
 # Output files

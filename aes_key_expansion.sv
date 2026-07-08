@@ -1,3 +1,6 @@
+`ifndef AES_KEY_EXPANSION
+`define AES_KEY_EXPANSION
+
 `include "aes_rcon.sv"
 
 module aes_key_expansion(
@@ -99,3 +102,5 @@ end
 assign round_key_inv_out = next_key;
 
 endmodule   
+
+`endif

@@ -8,6 +8,7 @@ module tb_cipher_top;
   //output
   wire [127:0] cipher_text;
   wire         cipher_ready;
+  wire [127:0] round_key_10;
 
   aes_cipher_top aes_cipher_top(
   //input
@@ -18,6 +19,7 @@ module tb_cipher_top;
   cipher_en,
   //output
   cipher_text,
+  round_key_10,
   cipher_ready
   );
   
@@ -44,7 +46,8 @@ module tb_cipher_top;
     #10
     cipher_en = 0;
     #120
-    $display ("---- cipher_text: %32h - READY: %1b\n", cipher_text[127:0], cipher_ready);
+    $display ("---- cipher_text: %32h - READY: %1b", cipher_text[127:0], cipher_ready);
+    $display ("---- round_key_10: %32h\n", round_key_10[127:0]);
     #10
     cipher_en = 1;
     plain_text = 128'h00112233445566778899aabbccddeeff;
@@ -52,7 +55,8 @@ module tb_cipher_top;
     #10
     cipher_en = 0;
     #120
-    $display ("---- cipher_text: %32h - READY: %1b\n", cipher_text[127:0], cipher_ready);
+    $display ("---- cipher_text: %32h - READY: %1b", cipher_text[127:0], cipher_ready);
+    $display ("---- round_key_10: %32h\n", round_key_10[127:0]);
     $finish;
   end
 

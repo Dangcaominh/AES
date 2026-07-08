@@ -1,3 +1,6 @@
+`ifndef AES_SBOX
+`define AES_SBOX
+
 function automatic logic[7:0] affine (
     input logic [7:0] x
 );
@@ -184,4 +187,7 @@ function automatic logic [7:0] aes_inv_sbox (
 return inv8(inv_affine(sbox_in));
 
 endfunction
+
+
+`endif
 

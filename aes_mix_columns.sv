@@ -1,3 +1,6 @@
+`ifndef AES_MIX_COLUMNS
+`define AES_MIX_COLUMNS
+
 function automatic logic [7:0] mul2 (
     input logic [7:0] in
 );
@@ -90,3 +93,5 @@ generate
 endgenerate
 
 endmodule
+
+`endif

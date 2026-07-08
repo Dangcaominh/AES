@@ -1,3 +1,6 @@
+`ifndef AES_SUBBYTES
+`define AES_SUBBYTES
+
 `include "aes_sbox.sv"
 
 module aes_subbytes (
@@ -29,3 +32,5 @@ generate
 endgenerate
 
 endmodule
+
+`endif

@@ -1,3 +1,6 @@
+`ifndef AES_RCON
+`define AES_RCON
+
 function automatic logic [31:0] aes_rcon (
     input logic [3:0] round
 );
@@ -35,3 +38,5 @@ function automatic logic [31:0] aes_inv_rcon (
     endcase
 
 endfunction
+
+`endif

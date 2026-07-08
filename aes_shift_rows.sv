@@ -1,3 +1,6 @@
+`ifndef AES_SHIFT_ROWS
+`define AES_SHIFT_ROWS
+
 module aes_shift_rows(
     input logic [127:0] state_in,
     output logic [127:0] state_out
@@ -45,3 +48,5 @@ assign state_out = {
 };
 
 endmodule
+
+`endif
