@@ -49,7 +49,7 @@ module tb_top;
     #10
     decipher_en = 1;
     cipher_text = 128'hdaba0685a6b6ef1d096f7980accf3ac5;
-    cipher_key = 128'ha5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5;
+    cipher_key = 128'h13111d7fe3944a17f307a78b4d2b30c5;
     #10
     decipher_en = 0;
     #240

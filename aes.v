@@ -24,9 +24,11 @@ wire cipher_ready;
 wire decipher_ready;
 wire [127:0] round_key_10;
 
+
 always_ff @(posedge clk) begin
     if(enable) begin
         cipher_en <= 1;
+        decipher_en <= 0;
     end
     else begin
         cipher_en <= 0;

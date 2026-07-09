@@ -48,8 +48,8 @@ always_ff @(posedge clk or negedge rst_n) begin
         decipher_ready <= 0;
     end
     else if(decipher_counter == 0) begin
-        if(decipher_en) begin
             decipher_ready <= 0;
+        if(decipher_en) begin
             decipher_counter <= 1;
             round_key_en <= 1;
             decipher_text_reg <= cipher_text ^ round_key_10;

@@ -46,8 +46,8 @@ always_ff @(posedge clk or negedge rst_n) begin
         cipher_ready <= 0;
     end
     else if(cipher_counter == 0) begin
-        if(cipher_en) begin
             cipher_ready <= 0;
+        if(cipher_en) begin
             cipher_counter <= 1;
             round_key_en <= 1;
             cipher_text_reg <= plain_text ^ cipher_key;
